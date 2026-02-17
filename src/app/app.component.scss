@@ -1,0 +1,19 @@
+ion-menu {
+  --width: 280px;
+  border-right: 1px solid var(--ion-color-step-150, #f0f0f0);
+  
+  ion-item {
+    --border-radius: 8px;
+    margin: 4px 16px;
+    
+    &.selected {
+      --background: rgba(var(--ion-color-primary-rgb), 0.1);
+      color: var(--ion-color-primary);
+      font-weight: 600;
+      
+      ion-icon {
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+}
