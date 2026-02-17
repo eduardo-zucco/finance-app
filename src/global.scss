@@ -10,7 +10,10 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+@use "tailwindcss";
 @import "@ionic/angular/css/core.css";
+
+@import "tailwindcss";
 
 /* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
@@ -34,4 +37,4 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";

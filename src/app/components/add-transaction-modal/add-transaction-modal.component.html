@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nova Transação</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="flex flex-col gap-4">
+    <ion-item fill="outline">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input [(ngModel)]="transaction.title"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline">
+      <ion-label position="floating">Valor (R$)</ion-label>
+      <ion-input type="number" [(ngModel)]="transaction.amount"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline">
+      <ion-select label="Tipo" [(ngModel)]="transaction.type">
+        <ion-select-option value="income">Receita</ion-select-option>
+        <ion-select-option value="expense">Despesa</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item fill="outline">
+      <ion-select label="Categoria" [(ngModel)]="transaction.category">
+        <ion-select-option value="Alimentação">Alimentação</ion-select-option>
+        <ion-select-option value="Transporte">Transporte</ion-select-option>
+        <ion-select-option value="Lazer">Lazer</ion-select-option>
+        <ion-select-option value="Salário">Salário</ion-select-option>
+        <ion-select-option value="Outros">Outros</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item fill="outline">
+      <ion-label>Data</ion-label>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="datetime" presentation="date" [(ngModel)]="transaction.date"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+
+    <ion-button expand="block" (click)="save()">Salvar</ion-button>
+  </div>
+</ion-content>
