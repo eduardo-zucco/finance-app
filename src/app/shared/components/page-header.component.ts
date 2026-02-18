@@ -9,50 +9,53 @@ import { chevronBackOutline } from 'ionicons/icons';
   standalone: true,
   imports: [CommonModule, IonicModule],
   template: `
-    <div
-      class="px-4 pt-12 pb-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300"
+    <header
+      class="sticky top-0 z-50 border-b transition-all duration-300
+             bg-white/85 dark:bg-gray-950/85 backdrop-blur-lg
+             border-gray-100 dark:border-gray-800"
     >
-      <div class="flex items-center justify-between">
-        <!-- Left: Back Button or Spacer -->
-        <div class="flex items-center w-12">
+      <div class="h-[env(safe-area-inset-top)] w-full md:h-0 bg-transparent transition-all"></div>
+
+      <div class="relative flex items-center justify-between h-14 px-4">
+        
+        <div class="flex items-center z-20 min-w-[48px]">
           <ion-button
             *ngIf="showBack"
             fill="clear"
-            color="dark"
+            size="small"
+            class="-ml-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full h-10 w-10"
             (click)="goBack()"
-            class="-ml-3"
           >
-            <ion-icon
-              name="chevron-back-outline"
-              slot="icon-only"
-              class="text-2xl text-gray-800 dark:text-white"
-            ></ion-icon>
+            <ion-icon name="chevron-back-outline" slot="icon-only" class="text-xl"></ion-icon>
           </ion-button>
         </div>
 
-        <!-- Center: Title -->
-        <div class="text-center flex-1">
+        <div class="absolute left-0 right-0 flex justify-center items-center pointer-events-none z-10">
           <h1
-            class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"
+            class="text-base md:text-lg font-bold truncate max-w-[60%]
+                   bg-clip-text text-transparent bg-gradient-to-r 
+                   from-gray-900 to-gray-600 
+                   dark:from-white dark:to-gray-400"
           >
             {{ title }}
           </h1>
         </div>
 
-        <!-- Right: Actions Slot -->
-        <div class="flex items-center justify-end w-12">
+        <div class="flex items-center justify-end z-20 min-w-[48px] gap-1">
           <ng-content select="[slot=end]"></ng-content>
         </div>
+        
       </div>
-    </div>
+    </header>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-    `,
-  ],
+  styles: [`
+    :host {
+      display: block;
+      /* Garante que o header fique sobre o conteúdo ao rolar */
+      position: relative;
+      z-index: 50;
+    }
+  `]
 })
 export class PageHeaderComponent {
   @Input() title: string = '';

@@ -38,3 +38,36 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+// global.scss
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.transaction-modal {
+  // Mobile: sheet normal
+  --border-radius: 20px 20px 0 0;
+
+  &::part(content) {
+    border-radius: 20px 20px 0 0;
+  }
+
+  // Desktop: modal centralizado com largura fixa
+  @media (min-width: 768px) {
+    --width: 480px;
+    --height: 90vh;
+    --border-radius: 20px;
+
+    &::part(content) {
+      border-radius: 20px;
+    }
+  }
+}
+
+ion-modal {
+  --backdrop-opacity: 0.5;
+}
